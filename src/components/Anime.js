@@ -1,23 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "./Spinner";
+import NotFound from "./NotFound";
 
 const Anime = () => {
   const { animeId } = useParams();
-  console.log("animeId: ", animeId);
   const [data, setData] = useState("");
+  const [notFound, setNotFound] = useState(false);
+
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(`https://api.jikan.moe/v4/anime/${animeId}`);
       const json = await res.json();
-      console.log(json.data);
-      setData(json.data);
+      if (json.status && json.status === 404) {
+        setNotFound(true);
+      } else {
+        setData(json.data);
+      }
     };
     getData();
   }, []);
+
   return (
     <>
-      {data ? (
+      {notFound ? (
+        <NotFound />
+      ) : data ? (
         <div className="anime">
           <div class="animeImg">
             <img src={data?.images.webp.large_image_url} alt="Anime" />

@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Anime from "./components/Anime";
 import { animes } from "./utils/anime";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -26,6 +27,7 @@ function App() {
               }
             />
             <Route exact path="/anime/:animeId" element={<Anime />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
       </div>

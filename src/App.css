@@ -171,6 +171,17 @@ body {
   width: 100px;
   height: 100px;
 }
+.notFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+.notFound img {
+  width: 500px;
+  height: 450px;
+}
+
 @media screen and (max-width: 900px) {
   .animeImg img {
     width: 310px;
@@ -183,6 +194,10 @@ body {
   }
 }
 @media screen and (max-width: 700px) {
+  .notFound img {
+    width: 300px;
+    height: 300px;
+  }
   .anime {
     flex-direction: column;
   }
