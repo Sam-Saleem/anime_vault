@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import { useNavigate } from "react-router-dom";
+import Spinner from "./Spinner";
 
-const Home = ({ searchKeyword }) => {
+const Home = ({ searchKeyword, setSearch }) => {
   let navigate = useNavigate();
   const [data, setData] = useState();
   useEffect(() => {
+    setData("");
     getData(1);
   }, [searchKeyword]);
 
@@ -27,7 +29,7 @@ const Home = ({ searchKeyword }) => {
   console.log("searchKeyword: ", searchKeyword);
   return (
     <>
-      {data && (
+      {data ? (
         <div className="page">
           <div className="row">
             {data?.data?.map((anime, index) => {
@@ -36,11 +38,12 @@ const Home = ({ searchKeyword }) => {
                   className="column"
                   key={index}
                   onClick={() => {
+                    setSearch("");
                     navigate(`/anime/${anime.mal_id}`);
                   }}
                 >
                   <Card
-                    image={anime.images.jpg.image_url}
+                    image={anime.images.webp.large_image_url}
                     title={anime.title}
                     type={anime.type}
                     status={anime.status}
@@ -53,6 +56,8 @@ const Home = ({ searchKeyword }) => {
           </div>
           {/* {data} */}
         </div>
+      ) : (
+        <Spinner />
       )}
     </>
   );

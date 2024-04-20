@@ -7,6 +7,8 @@ const Navbar = ({ setSearch, items }) => {
   const [routePath, setRoutePath] = useState("");
 
   useEffect(() => {
+    setText("");
+    setSuggested([]);
     // Update the route path whenever the location changes
     setRoutePath(location.pathname);
   }, [location.pathname]);
@@ -61,7 +63,7 @@ const Navbar = ({ setSearch, items }) => {
           <div className="TypeAheadDropDown">
             <label htmlFor="search">Search</label>
             <input
-              placeholder="Enter anime name"
+              placeholder="Enter Anime Name"
               type="search"
               value={text}
               onChange={(e) => {

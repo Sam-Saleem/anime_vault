@@ -21,7 +21,9 @@ function App() {
             <Route
               exact
               path="/"
-              element={<Home searchKeyword={searchKeyword} />}
+              element={
+                <Home searchKeyword={searchKeyword} setSearch={setSearch} />
+              }
             />
             <Route exact path="/anime/:animeId" element={<Anime />} />
           </Routes>

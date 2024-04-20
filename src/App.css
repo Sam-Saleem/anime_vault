@@ -46,7 +46,7 @@ body {
 }
 .page {
   margin: 20px 30px;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
 }
 .card {
@@ -55,6 +55,14 @@ body {
   background-color: #f1f1f1;
   transition: 0.3s;
   border-radius: 8px;
+}
+.card h3 {
+  margin-top: 18px;
+  margin-bottom: 9px;
+}
+.card p {
+  margin-top: 0px;
+  margin-bottom: 16px;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -66,8 +74,14 @@ body {
 .container {
   padding: 2px 16px;
 }
+.wrap {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .card img {
-  border-radius: 5px 5px 0 0;
+  border-radius: 8px 8px 0 0;
   width: 100%;
   height: 350px;
 }
@@ -81,7 +95,7 @@ body {
   display: flex;
 }
 .TypeAheadDropDown label {
-  margin: 6px 16px;
+  margin: 6px 10px;
   font-size: 20px;
   font-weight: normal;
   color: white;
@@ -92,10 +106,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.73);
-  padding: 10px 5px;
+  padding: 10px;
   box-sizing: border-box;
   outline: none;
-  border-radius: 8px;
+  border-radius: 17px;
 }
 .TypeAheadDropDown ul::before {
   content: "";
@@ -132,7 +146,7 @@ body {
   align-items: flex-start;
 }
 .animeImg img {
-  width: 450px;
+  width: 400px;
   height: 600px;
 }
 .animeDetails {
@@ -147,10 +161,20 @@ body {
   font-size: 18px;
   margin: 10px;
 }
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+.spinner img {
+  width: 100px;
+  height: 100px;
+}
 @media screen and (max-width: 900px) {
   .animeImg img {
-    width: 300px;
-    height: 400px;
+    width: 310px;
+    height: 460px;
   }
   .column {
     width: 33%;
@@ -165,6 +189,10 @@ body {
   .animeImg {
     width: 100%;
   }
+  .animeImg img {
+    width: 350px;
+    height: 450px;
+  }
   .animeDetails {
     width: 100%;
   }
@@ -178,6 +206,10 @@ body {
   .header {
     font-size: 24px;
     padding: 10px 10px;
+  }
+  .animeImg img {
+    width: 250px;
+    height: 400px;
   }
   .column {
     width: 100%;
