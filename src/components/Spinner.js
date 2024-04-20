@@ -1,10 +1,9 @@
 // import "../App.css";
-import loading from "./loading.gif";
 
 const Spinner = () => {
   return (
     <div className="spinner">
-      <img src={loading} alt="loading" />
+      <img src={"/loading.gif"} alt="loading" />
     </div>
   );
 };
