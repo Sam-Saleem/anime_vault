@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import Anime from "./components/Anime";
+import { animes } from "./utils/anime";
 
 function App() {
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const setSearch = (keword) => {
+    console.log("keword: ", keword);
+    setSearchKeyword(keword);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <Router>
+          <Navbar setSearch={setSearch} items={animes} />
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={<Home searchKeyword={searchKeyword} />}
+            />
+            <Route exact path="/anime/:animeId" element={<Anime />} />
+          </Routes>
+        </Router>
+      </div>
+    </>
   );
 }
 
