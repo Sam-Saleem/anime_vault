@@ -7,16 +7,6 @@ const Card = ({ image, title, type, status, studios, episodes }) => {
       <img src={image} alt="Avatar" />
       <div className="container">
         <h3>
-          {/* {title.length > 29 ? (
-            <b>{`${title.slice(0, 36)}...`}</b>
-          ) : (
-            // <b>{title}</b>
-            <>
-              <b>{title}</b>
-              <br />
-              <br />
-            </>
-          )} */}
           <b className="wrap">{title}</b>
         </h3>
         <p className="wrap">

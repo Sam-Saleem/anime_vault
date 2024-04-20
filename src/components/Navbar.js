@@ -5,6 +5,18 @@ import { Link, useLocation } from "react-router-dom";
 const Navbar = ({ setSearch, items }) => {
   const location = useLocation(); // Get the current location object
   const [routePath, setRoutePath] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+
+  const [suggested, setSuggested] = useState([]);
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    const callApi = setTimeout(() => {
+      setSearch(searchInput);
+    }, 2000);
+
+    return () => clearTimeout(callApi);
+  }, [searchInput]);
 
   useEffect(() => {
     setText("");
@@ -12,8 +24,7 @@ const Navbar = ({ setSearch, items }) => {
     // Update the route path whenever the location changes
     setRoutePath(location.pathname);
   }, [location.pathname]);
-  const [suggested, setSuggested] = useState([]);
-  const [text, setText] = useState("");
+
   const onTextChange = (value) => {
     let suggestions = [];
     if (value.length > 0) {
@@ -67,7 +78,8 @@ const Navbar = ({ setSearch, items }) => {
               type="search"
               value={text}
               onChange={(e) => {
-                setSearch(e.target.value);
+                setSearchInput(e.target.value);
+                // setSearch(e.target.value);
                 onTextChange(e.target.value);
               }}
             />

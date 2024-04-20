@@ -7,32 +7,32 @@ const Home = ({ searchKeyword, setSearch }) => {
   let navigate = useNavigate();
   const [data, setData] = useState();
   useEffect(() => {
+    const getData = async (pageNo) => {
+      if (searchKeyword && searchKeyword.length) {
+        const res = await fetch(
+          `https://api.jikan.moe/v4/anime?q=${searchKeyword}&page=${pageNo}`
+        );
+        const json = await res.json();
+        setData(json?.data);
+      } else {
+        const res = await fetch(
+          `https://api.jikan.moe/v4/anime?page=${pageNo}`
+        );
+        const json = await res.json();
+        setData(json?.data);
+      }
+    };
+
     setData("");
     getData(1);
   }, [searchKeyword]);
 
-  const getData = async (pageNo) => {
-    if (searchKeyword && searchKeyword.length) {
-      const res = await fetch(
-        `https://api.jikan.moe/v4/anime?q=${searchKeyword}&page=${pageNo}`
-      );
-      const json = await res.json();
-      console.log("json", json);
-      setData(json);
-    } else {
-      const res = await fetch(`https://api.jikan.moe/v4/anime?page=${pageNo}`);
-      const json = await res.json();
-      console.log("json", json);
-      setData(json);
-    }
-  };
-  console.log("searchKeyword: ", searchKeyword);
   return (
     <>
       {data ? (
         <div className="page">
           <div className="row">
-            {data?.data?.map((anime, index) => {
+            {data?.map((anime, index) => {
               return (
                 <div
                   className="column"
@@ -54,7 +54,6 @@ const Home = ({ searchKeyword, setSearch }) => {
               );
             })}
           </div>
-          {/* {data} */}
         </div>
       ) : (
         <Spinner />

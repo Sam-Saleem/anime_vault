@@ -19,7 +19,7 @@ const Anime = () => {
       }
     };
     getData();
-  }, []);
+  }, [animeId]);
 
   return (
     <>
